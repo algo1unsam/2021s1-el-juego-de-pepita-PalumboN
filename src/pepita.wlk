@@ -30,6 +30,16 @@ object pepita {
 	method estaEnElNido() {
 		return position == nido.position()
 	}
+	
+	method caerSiEstasVolando() {
+		if (not self.estaEnElSuelo()) {			
+			position = position.down(1) 
+		}
+	}
+	
+	method estaEnElSuelo() {
+		return position.y() == 0 
+	}
 
 }
 
