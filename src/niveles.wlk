@@ -38,6 +38,7 @@ object tutorial3 {
 		config.configurarTeclas()
 		config.configurarColisiones()
 		config.configurarGravedad()
+		config.ceroEnergia()
 	}
 
 }
@@ -45,20 +46,28 @@ object tutorial3 {
 object config {
 
 	method configurarTeclas() {
-		keyboard.left().onPressDo({ pepita.irA(pepita.position().left(1)) })
+		keyboard.left().onPressDo({ pepita.irA(pepita.position().left(1))})
 		keyboard.right().onPressDo({ pepita.irA(pepita.position().right(1))})
 		keyboard.up().onPressDo({ pepita.irA(pepita.position().up(1))})
 		keyboard.down().onPressDo({ pepita.irA(pepita.position().down(1))})
-	}
-	
-	method configurarGravedad() {
-		game.onTick(800, "GRAVEDAD", { pepita.caerSiEstasVolando() }) 
+		keyboard.c().onPressDo({ 
+			if(game.colliders(pepita) != []) {pepita.come(game.uniqueCollider(pepita))}
+		})
 	}
 
 	method configurarColisiones() {
-		game.onCollideDo(pepita, { algo => algo.teEncontro(pepita) })
+		game.onCollideDo(pepita, { algo => algo.teEncontro(pepita)})
+	}
+
+	method configurarGravedad() {
+		game.onTick(800, "GRAVEDAD", { pepita.caerSiEstasVolando()})
 	}
 	
+	method ceroEnergia() {
+		game.onTick(100, "SIN ENERGIA", {=> if(pepita.estaCansada()) {
+			game.say(pepita,"PERDI!")
+			game.schedule(2000, {=> game.stop()})
+		}})
+	}
 
 }
-

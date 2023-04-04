@@ -9,25 +9,23 @@ object nido {
 
 	method teEncontro(ave) {
 		game.say(ave, "GANASTE! WIII")
-		game.schedule(2000, { game.stop() })
+		game.schedule(2000, { game.stop()})
 	}
-}
 
+}
 
 object silvestre {
 
 	method image() = "silvestre.png"
 
 	method position() = game.at(self.coordenadaX(), 0)
-	
+
+	method teEncontro(ave) {
+		game.say(self, "YUM YUM YUM **Ruido de masticar**")
+		game.schedule(2000, { game.stop()})
+	}
+
 	method coordenadaX() {
 		return pepita.position().x().max(3)
 	}
-	
-	method teEncontro(ave) {
-		game.say(self, "YUM YUM YUM **Ruido de masticar**")
-		game.schedule(2000, { game.stop() })
-	}
-
 }
-

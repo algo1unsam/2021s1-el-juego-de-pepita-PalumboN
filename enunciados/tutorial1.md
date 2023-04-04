@@ -3,7 +3,8 @@
 > Objetivo del nivel: familiarizarse con el framework
 
 ### Contexto
-Pepita es una golondrina que puede moverse libremente por el juego. Su objetivo es llegar al nido, es por eso que se muestra más grande al llegar a él. Para lograrlo debe evitar a Silvestre, un gato que está atento a sus pasos desde el piso.
+Pepita es una golondrina que puede moverse libremente por el juego. Su objetivo es llegar al nido, es por eso que se muestra más grande al llegar a él. 
+Para lograrlo debe evitar a Silvestre, un gato que está atento a sus pasos desde el piso.
 
 ### Requerimientos
 - Hacer que Silvestre persiga a Pepita. Silvestre siempre se mueve a la altura del piso, pero va persiguiendo a Pepita hacia los lados, según donde ella se mueva.
